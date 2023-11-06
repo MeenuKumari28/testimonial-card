@@ -6,7 +6,7 @@ favicon: /-/meenukumari28.github.io/testimonial-card/favicon.ico
 -- fastn.dependency: fastn-community.github.io/doc-site as doc-site
 -- fastn.dependency: fastn-community.github.io/footer
 -- fastn.dependency: fastn-community.github.io/roboto-typography
--- fastn.dependency: meenukumari28.github.io/bubblegum-cs
+-- fastn.dependency: fastn-community.github.io/dark-flame-cs
 
 -- fastn.auto-import: meenukumari28.github.io/testimonial-card/FASTN/ds
 -- fastn.auto-import: meenukumari28.github.io/testimonial-card/assets
