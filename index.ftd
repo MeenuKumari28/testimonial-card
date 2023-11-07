@@ -32,6 +32,18 @@ testimonials: $common.list-of-testimonials-2
 -- testimonials-card-5:
 testimonials: $common.list-of-testimonials-2
 
+-- ds.h1: Testimonial 6
+
+-- testimonials-card-6:
+testimonials: $common.list-of-testimonials
+nav: $common.navs
+
+-- ds.h1: Testimonial 7
+
+-- testimonials-card-7:
+testimonials: $common.list-of-testimonials
+nav: $common.navs
+
 -- end: ds.page
 
 
@@ -1119,6 +1131,12 @@ body: $obj.body
 
 
 
+
+
+
+
+
+
 -- component testimonials-card-5-details:
 caption title:
 string user: 
@@ -1193,3 +1211,487 @@ color: $inherited.colors.text
 -- end: ftd.column
 
 -- end: testimonials-card-5-details
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- component testimonials-card-6:
+optional caption title:
+common.testimonial list testimonials:
+common.testimonial-nav list nav:
+
+-- ftd.column:
+width: fill-container
+
+-- ftd.desktop: 
+
+-- testimonials-card-6-desktop: $testimonials-card-6.title
+testimonials: $testimonials-card-6.testimonials
+nav: $testimonials-card-6.nav
+
+-- end: ftd.desktop
+
+-- ftd.mobile: 
+
+-- testimonials-card-6-mobile: $testimonials-card-6.title
+testimonials: $testimonials-card-6.testimonials
+nav: $testimonials-card-6.nav
+
+-- end: ftd.mobile
+
+-- end: ftd.column
+
+-- end: testimonials-card-6
+
+
+
+
+
+
+
+
+
+
+-- component testimonials-card-6-desktop:
+optional caption title:
+common.testimonial list testimonials:
+common.testimonial-nav list nav:
+
+-- ftd.column:
+padding-vertical.px: 50
+width: fill-container
+spacing.fixed.px: 32
+align-content: center
+
+-- ftd.text: $testimonials-card-6-desktop.title
+if: { testimonials-card-6-desktop.title != NULL }
+role: $inherited.types.heading-small
+color: $inherited.colors.text-strong
+
+-- testimonials-card-6-details:
+$loop$: $testimonials-card-6-desktop.testimonials as $obj
+title: $obj.title
+user: $obj.user
+designation: $obj.designation
+avatar: $obj.avatar
+body: $obj.body
+index: $obj.index
+
+-- ftd.row:
+spacing.fixed.px: 12
+
+-- nav-lists:
+$loop$: $testimonials-card-6-desktop.nav as $obj
+index: $obj.index
+
+-- end: ftd.row
+
+-- end: ftd.column
+
+-- end: testimonials-card-6-desktop
+
+
+
+
+
+
+
+
+
+
+-- component testimonials-card-6-mobile:
+optional caption title:
+common.testimonial list testimonials:
+common.testimonial-nav list nav:
+
+-- ftd.column:
+padding-vertical.px: 24
+padding-horizontal.px: 24
+width: fill-container
+spacing.fixed.px: 32
+align-content: center
+
+-- ftd.text: $testimonials-card-6-mobile.title
+if: { testimonials-card-6-mobile.title != NULL }
+role: $inherited.types.heading-small
+color: $inherited.colors.text-strong
+
+-- testimonials-card-6-details:
+$loop$: $testimonials-card-6-mobile.testimonials as $obj
+title: $obj.title
+user: $obj.user
+designation: $obj.designation
+avatar: $obj.avatar
+body: $obj.body
+index: $obj.index
+
+-- ftd.row:
+spacing.fixed.px: 12
+
+-- nav-lists:
+$loop$: $testimonials-card-6-mobile.nav as $obj
+index: $obj.index
+
+-- end: ftd.row
+
+-- end: ftd.column
+
+-- end: testimonials-card-6-mobile
+
+
+
+
+
+
+
+
+
+-- component nav-lists:
+integer index: 1
+boolean $active: false
+
+-- ftd.row:
+width.fixed.px: 13
+height.fixed.px: 13
+border-radius.px: 10
+border-width.px: 1
+$on-click$: $ftd.toggle($a = $nav-lists.active)
+$on-click$: $ftd.set-integer($a = $current-slide, v = $nav-lists.index)
+background.solid if { nav-lists.index == current-slide }: $inherited.colors.cta-primary.base
+background.solid: $inherited.colors.info.base
+$on-mouse-enter$: $ftd.set-bool( $a = $nav-lists.active, v = true )
+$on-mouse-leave$: $ftd.set-bool( $a = $nav-lists.active, v = false )
+
+-- end: ftd.row
+
+-- end: nav-lists
+
+
+
+
+
+
+
+
+
+
+-- component testimonials-card-6-details:
+caption title:
+string user: 
+string designation:
+ftd.image-src avatar:
+body body:
+optional integer index: 1
+boolean $active: false
+
+-- ftd.column:
+if: { testimonials-card-6-details.index == current-slide }
+width.fixed.px: 450
+width if { ftd.device == "mobile"}: fill-container
+spacing.fixed.px: 64
+min-height.fixed.px: 250
+
+-- ftd.image:
+src: $testimonials-card-6-details.avatar
+width.fixed.px: 112
+align-self: center
+background.solid: $inherited.colors.background.base
+padding.px: 16
+anchor: parent
+top.px: -62
+border-radius.px: 100
+
+-- ftd.column:
+background.solid: $inherited.colors.background.step-2
+padding-horizontal.px: 24
+padding-bottom.px: 24
+align-content: center
+padding-top.px: 64
+spacing.fixed.px: 8
+border-radius.px: 16
+
+-- ftd.text: $testimonials-card-6-details.title
+role: $inherited.types.heading-medium
+color: $inherited.colors.text-strong
+
+-- ftd.text:
+role: $inherited.types.copy-large
+color: $inherited.colors.text
+text-align: center
+
+$testimonials-card-6-details.body
+
+-- ftd.column:
+spacing.fixed.px: 4
+margin-top.px: 64
+align-content: center
+width: fill-container
+role: $inherited.types.copy-regular
+
+-- ftd.text: $testimonials-card-6-details.user
+color: $inherited.colors.text-strong
+style: bold
+
+-- ftd.text: $testimonials-card-6-details.designation
+color: $inherited.colors.text
+
+-- end: ftd.column
+
+-- end: ftd.column
+
+-- end: ftd.column
+
+-- end: testimonials-card-6-details
+
+
+
+
+
+
+
+
+
+
+-- component testimonials-card-7:
+optional caption title:
+common.testimonial list testimonials:
+common.testimonial-nav list nav:
+
+-- ftd.column:
+width: fill-container
+
+-- ftd.desktop: 
+
+-- testimonials-card-7-desktop: $testimonials-card-7.title
+testimonials: $testimonials-card-7.testimonials
+nav: $testimonials-card-7.nav
+
+-- end: ftd.desktop
+
+-- ftd.mobile: 
+
+-- testimonials-card-7-mobile: $testimonials-card-7.title
+testimonials: $testimonials-card-7.testimonials
+nav: $testimonials-card-7.nav
+
+-- end: ftd.mobile
+
+-- end: ftd.column
+
+-- end: testimonials-card-7
+
+
+
+
+
+
+
+
+
+
+-- component testimonials-card-7-desktop:
+optional caption title:
+common.testimonial list testimonials:
+common.testimonial-nav list nav:
+
+-- ftd.column:
+padding-vertical.px: 50
+width: fill-container
+spacing.fixed.px: 32
+align-content: center
+
+-- ftd.text: $testimonials-card-7-desktop.title
+if: { testimonials-card-7-desktop.title != NULL }
+role: $inherited.types.heading-small
+color: $inherited.colors.text-strong
+
+-- testimonials-card-7-details:
+$loop$: $testimonials-card-7-desktop.testimonials as $obj
+title: $obj.title
+user: $obj.user
+designation: $obj.designation
+avatar: $obj.avatar
+body: $obj.body
+index: $obj.index
+
+-- ftd.row:
+spacing.fixed.px: 12
+
+-- nav-lists:
+$loop$: $testimonials-card-7-desktop.nav as $obj
+index: $obj.index
+
+-- end: ftd.row
+
+-- end: ftd.column
+
+-- end: testimonials-card-7-desktop
+
+
+
+
+
+
+
+
+
+
+-- component testimonials-card-7-mobile:
+optional caption title:
+common.testimonial list testimonials:
+common.testimonial-nav list nav:
+
+-- ftd.column:
+padding-vertical.px: 24
+padding-horizontal.px: 24
+width: fill-container
+spacing.fixed.px: 32
+align-content: center
+
+-- ftd.text: $testimonials-card-7-mobile.title
+if: { testimonials-card-7-mobile.title != NULL }
+role: $inherited.types.heading-small
+color: $inherited.colors.text-strong
+
+-- testimonials-card-7-details:
+$loop$: $testimonials-card-7-mobile.testimonials as $obj
+title: $obj.title
+user: $obj.user
+designation: $obj.designation
+avatar: $obj.avatar
+body: $obj.body
+index: $obj.index
+
+-- ftd.row:
+spacing.fixed.px: 12
+
+-- nav-lists:
+$loop$: $testimonials-card-7-mobile.nav as $obj
+index: $obj.index
+
+-- end: ftd.row
+
+-- end: ftd.column
+
+-- end: testimonials-card-7-mobile
+
+
+
+
+
+
+
+
+
+-- component nav-lists:
+integer index: 1
+boolean $active: false
+
+-- ftd.row:
+width.fixed.px: 13
+height.fixed.px: 13
+border-radius.px: 10
+border-width.px: 1
+$on-click$: $ftd.toggle($a = $nav-lists.active)
+$on-click$: $ftd.set-integer($a = $current-slide, v = $nav-lists.index)
+background.solid if { nav-lists.index == current-slide }: $inherited.colors.cta-primary.base
+background.solid: $inherited.colors.info.base
+$on-mouse-enter$: $ftd.set-bool( $a = $nav-lists.active, v = true )
+$on-mouse-leave$: $ftd.set-bool( $a = $nav-lists.active, v = false )
+
+-- end: ftd.row
+
+-- end: nav-lists
+
+
+
+
+
+
+
+
+
+
+-- component testimonials-card-7-details:
+caption title:
+string user: 
+string designation:
+ftd.image-src avatar:
+body body:
+optional integer index:
+
+-- ftd.column:
+if: { testimonials-card-7-details.index == current-slide }
+width.fixed.px: 600
+padding.px: 24
+width if { ftd.device == "mobile"}: fill-container
+
+-- ftd.column:
+height.fixed.px: 142
+width.fixed.px: 160
+border-top-width.px: 8
+border-right-width.px: 8
+border-color: $inherited.colors.accent.primary
+anchor: parent
+right.px: 0
+
+-- end: ftd.column
+
+-- ftd.column:
+padding.px: 24
+spacing.fixed.px: 8
+border-bottom-width.px: 1
+border-color: $inherited.colors.border
+
+-- ftd.text: $testimonials-card-7-details.title
+role: $inherited.types.heading-small
+color: $inherited.colors.text-strong
+
+-- ftd.text:
+role: $inherited.types.copy-large
+color: $inherited.colors.text-strong
+
+$testimonials-card-7-details.body
+
+-- end: ftd.column
+
+-- ftd.column:
+padding-horizontal.px: 24
+padding-top.px: 12
+spacing.fixed.px: 4
+
+-- ftd.text: $testimonials-card-7-details.user
+role: $inherited.types.copy-regular
+color: $inherited.colors.text-strong
+
+-- ftd.text: $testimonials-card-7-details.designation
+role: $inherited.types.copy-regular
+color: $inherited.colors.text
+
+-- end: ftd.column
+
+-- ftd.column:
+height.fixed.px: 142
+width.fixed.px: 160
+border-left-width.px: 8
+border-bottom-width.px: 8
+border-color: $inherited.colors.accent.primary
+anchor: parent
+left.px: -8
+bottom.px: 0
+
+-- end: ftd.column
+
+-- end: ftd.column
+
+-- end: testimonials-card-7-details
